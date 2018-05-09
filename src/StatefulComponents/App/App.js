@@ -6,6 +6,7 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {}
+    this.cardType = ''
   }
 
 
@@ -14,7 +15,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <FilmCrawl />
+        <div crawl="crawl">
+          <FilmCrawl />   
+        </div>
+        <div buttons="buttons">
+          <button>People</button>
+          <button>Planets</button>
+          <button>Vehicles</button>
+        </div>
+        <div>
+          <CardContainer cardContainer="card-container" cardType={this.state.cardType}/>
+        </div>
       </div>
     );
   }
