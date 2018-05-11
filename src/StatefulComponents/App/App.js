@@ -7,8 +7,12 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      cardType: 'people'
+      cardType: ''
     }
+  }
+
+  handleClick =(event)=> { 
+    this.setState({cardType : event.target.value})
   }
 
   render() {
@@ -18,13 +22,14 @@ class App extends Component {
           <FilmCrawl />
         </div>
         <div buttons="buttons">
-          <button>People</button>
-          <button>Planets</button>
-          <button>Vehicles</button>
-          <button>Favorites</button>
+        <button onClick={this.handleClick} value="people" className="button">People</button>
+        <button className="button">Planets</button>
+        <button className="button">Vehicles</button>
+        <button className="button">Favorites</button>
         </div>
         <div>
-          <CardContainer cardContainer="card-container" cardType={this.state.cardType} />
+          {this.state.cardType && <CardContainer cardContainer="card-container" cardType={this.state.cardType} />}
+          
         </div>
       </div>
     );

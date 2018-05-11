@@ -20,6 +20,7 @@ export const homeworldCall = (data) => {
   }
 }
 
+
 export const speciesCall = (data)=>{
   try {
     const dataArr = data.results;
@@ -34,3 +35,22 @@ export const speciesCall = (data)=>{
     throw new Error('unsuccessful fetch for species')
   }
 }
+
+// const decider = (specific)=>{
+  // if (specific === species)
+// }
+
+// export const secondCall = (data)=>{
+//   try {
+//     const dataArr = data.results;
+//     const unresolvedPromises = dataArr.map(async (item) => {
+//       const response = await fetch(item.species)
+//       const data = await response.json()
+
+//       return { species: data.name,  }
+//     })
+//     return Promise.all(unresolvedPromises)
+//   } catch (error) {
+//     throw new Error('unsuccessful fetch for species')
+//   }
+// }
