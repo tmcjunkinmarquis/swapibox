@@ -23,8 +23,8 @@ class App extends Component {
         </div>
         <div buttons="buttons">
         <button onClick={this.handleClick} value="people" className="button">People</button>
-        <button className="button">Planets</button>
-        <button className="button">Vehicles</button>
+          <button onClick={this.handleClick} value="planets" className="button">Planets</button>
+          <button onClick={this.handleClick} value="vehicles" className="button">Vehicles</button>
         <button className="button">Favorites</button>
         </div>
         <div>
