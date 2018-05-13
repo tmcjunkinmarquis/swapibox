@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Card extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      favorite: false,
-    }
+      favorite: false
+    };
   }
 
   card = () => {
-    
-    // const { characterName, homeworld, population, species } = this.props.person
-    const { dynamic1, dynamic2, dynamic3, dynamic4, dynamic5 } = this.props.element
+    const { 
+      dynamic1, 
+      dynamic2, 
+      dynamic3, 
+      dynamic4, 
+      dynamic5 
+    } = this.props.element;
 
     return (
       <div className='card'>
@@ -21,7 +26,7 @@ class Card extends Component {
         <h3 className='font'>{dynamic4}</h3>
         <h3 className='font'>{dynamic5}</h3>
       </div>
-    )
+    );
   }
 
   render() {
@@ -29,19 +34,16 @@ class Card extends Component {
       <div>
         {this.card()}
       </div>
-    )
+    );
   }
 }
 
-
+Card.propTypes = {
+  element: PropTypes.object,
+  dynamic1: PropTypes.string,
+  dynamic2: PropTypes.string,
+  dynamic3: PropTypes.string,
+  dynamic4: PropTypes.string,
+  dynamic5: PropTypes.string
+};
 export default Card;
-
-//const ofThree;
-    //if(this.props.person){
-      // ofThree = person
-    // }else if (this.props.planet) {
-      // ofThree = planet
-      //const { Object.entries(dynamicItem[0]), Object.entries(dynamicItem[1]), Object.entries(dynamicItem[2]), Object.entries(dynamicItem[3]))} = this.props.ofThree
-      // } else {
-        //const { } = this.props.vehicle 
-      // }
