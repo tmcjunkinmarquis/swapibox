@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { apiCalls } from '../../apiCalls/apiCalls';
+import { fetchApi } from '../../api/api';
 
 // import './FilmCrawl.css';
 
@@ -19,7 +19,7 @@ class FilmCrawl extends Component {
   async componentDidMount() {
     const randomOnetoSeven = Math.floor((Math.random() * 6) + 1)
     const dynamicVariable = `films/${randomOnetoSeven}`
-    const filmData = await apiCalls(dynamicVariable)  //just need opening crawl, title, release date
+    const filmData = await fetchApi(dynamicVariable)  //just need opening crawl, title, release date
     const cleanFilmData = this.cleaner(filmData)
     this.setState({cleanFilmData})
   }

@@ -13,7 +13,6 @@ class Card extends Component {
     // const { characterName, homeworld, population, species } = this.props.person
     const { dynamic1, dynamic2, dynamic3, dynamic4, dynamic5 } = this.props.element
 
-    
     return (
       <div className='card'>
         <h2 className='font'>{dynamic1}</h2>
