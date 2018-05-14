@@ -34,11 +34,9 @@ class FilmCrawl extends Component {
         <h1>{this.state.cleanFilmData.title}</h1>
         <h2>{this.state.cleanFilmData.release_date}</h2>
         <h3>{this.state.cleanFilmData.opening_crawl}</h3>
-
       </div>
     );
   }
-
 }
 
 export default FilmCrawl;
