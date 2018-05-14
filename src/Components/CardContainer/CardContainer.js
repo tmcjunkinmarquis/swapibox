@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import Card from '../Card/Card';
+import '../CardContainer/CardContainer.css';
 
 export const CardContainer = ({ allState, handleFavoriteClick }) => {
-  const cardClicked = allState.cardType;
-  // const favorites = allState.favorites;
 
+  const cardClicked = allState.cardType;
   const createCard = (dataInSquareBrackets) => {
     const makeCard = dataInSquareBrackets.map((element)=>{
       return <Card 
         element={element}
-        handleFavoriteClick={handleFavoriteClick} />;
+        handleFavoriteClick={ handleFavoriteClick } />;
     });
     return makeCard;
   };
@@ -19,8 +18,7 @@ export const CardContainer = ({ allState, handleFavoriteClick }) => {
   return (
     allState[cardClicked] === 'favorites' ? 
       createCard(allState.favorites) : 
-    createCard(allState[cardClicked]) 
-    // allState.cardType && createCard(allState[cardClicked])
+      createCard(allState[cardClicked]) 
   );
 };
 
@@ -33,5 +31,3 @@ CardContainer.propTypes = {
   cleanedCardData: PropTypes.array,
   ititialFetchedObj: PropTypes.array
 };
-
-  

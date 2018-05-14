@@ -27,14 +27,17 @@ class App extends Component {
   }
 
   handleFavoriteClick = (content) => {
-    const foundItem = this.state.favorites.find(fave => content.dynamic1 === fave.dynamic1);
+    const foundItem = this.state.favorites.find(fave => {
+      return content.dynamic1 === fave.dynamic1; 
+    });
 
     if (!foundItem){
-      console.log(foundItem)
       this.setState({ favorites: [...this.state.favorites, content] });
-    }else{
-      const stillFavorite = this.state.favorites.filter(fave => content.dynamic1 !== fave.dynamic1)
-      this.setState({ favorites: stillFavorite })
+    } else {
+      const stillFavorite = this.state.favorites.filter(fave => {
+        return content.dynamic1 !== fave.dynamic1; 
+      });
+      this.setState({ favorites: stillFavorite });
     }
   }
 
@@ -109,11 +112,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div crawl="crawl">
-          <FilmCrawl />
-        </div>
-        <div buttons="buttons">
+      <div className="app">
+       <div class="project-name">Star Wars API Project</div>
+        <div className="buttons">
           <button 
             onClick={this.handleClick} 
             value="people" 
@@ -133,16 +134,20 @@ class App extends Component {
             onClick={this.handleClick}
 
             value="favorites"
-            className="button">Favorites
+            className="button">Show my faves!!
           </button>
         </div>
-        <div>
+        <section className='card-Container'>
           {this.state.cardType && 
           <CardContainer 
+            
             handleFavoriteClick={this.handleFavoriteClick}
             className="card-container" 
             allState={this.state} 
           />}
+        </section>
+        <div className="crawl">
+          <FilmCrawl />
         </div>
       </div>
     );

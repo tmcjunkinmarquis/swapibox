@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import './Card.css'
 class Card extends Component {
   constructor(props) {
     super(props);
@@ -10,8 +10,7 @@ class Card extends Component {
   }
 
   handleClick = ()=>{
-    // this.setState({ isFavorite: !this.state.isFavorite })
-    this.props.handleFavoriteClick(this.props.element)
+    this.props.handleFavoriteClick(this.props.element);
   }
 
   card = () => {
@@ -24,11 +23,11 @@ class Card extends Component {
     } = this.props.element;
 
     return (
+      
       <div className='card'>
         <button 
           onClick={this.handleClick}
-          
-        >Favorite</button>
+        >Make me a fave!</button>
         <h2 className='font'>{dynamic1}</h2>
         <h3 className='font'>{dynamic2}</h3>
         <h3 className='font'>{dynamic3}</h3>
@@ -53,6 +52,8 @@ Card.propTypes = {
   dynamic2: PropTypes.string,
   dynamic3: PropTypes.string,
   dynamic4: PropTypes.string,
-  dynamic5: PropTypes.string
+  dynamic5: PropTypes.string,
+  handleFavoriteClick: PropTypes.func
 };
+
 export default Card;
