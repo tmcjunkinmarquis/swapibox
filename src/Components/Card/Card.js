@@ -5,8 +5,13 @@ class Card extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      favorite: false
+      isFavorite:  false
     };
+  }
+
+  handleClick = ()=>{
+    // this.setState({ isFavorite: !this.state.isFavorite })
+    this.props.handleFavoriteClick(this.props.element)
   }
 
   card = () => {
@@ -20,6 +25,10 @@ class Card extends Component {
 
     return (
       <div className='card'>
+        <button 
+          onClick={this.handleClick}
+          
+        >Favorite</button>
         <h2 className='font'>{dynamic1}</h2>
         <h3 className='font'>{dynamic2}</h3>
         <h3 className='font'>{dynamic3}</h3>

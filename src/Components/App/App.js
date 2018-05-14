@@ -21,22 +21,37 @@ class App extends Component {
       vehicles: [],
       planets: [],
       cleanedCardData: [],
-      initialFetchedObj: []
+      initialFetchedObj: [],
+      favorites: []
     };
   }
 
+  handleFavoriteClick = (content) => {
+    const foundItem = this.state.favorites.find(fave => content.dynamic1 === fave.dynamic1);
+
+    if (!foundItem){
+      console.log(foundItem)
+      this.setState({ favorites: [...this.state.favorites, content] });
+    }else{
+      const stillFavorite = this.state.favorites.filter(fave => content.dynamic1 !== fave.dynamic1)
+      this.setState({ favorites: stillFavorite })
+    }
+  }
+
   handleClick = (event) => {
-    this.setState({ 
+    this.setState({
       cardType: event.target.value
-    }, () => { 
-      this.initialFetchCall(); 
-    });
+    }, () => {
+      this.initialFetchCall();
+    });   
   }
 
   initialFetchCall = async () => {
-    const categoryData = await fetchApi(this.state.cardType);
+    if (this.state.cardType !== 'favorites' ){
+      const categoryData = await fetchApi(this.state.cardType);
 
-    this.checkCardType(categoryData);
+      this.checkCardType(categoryData);
+    }
   }
 
   getpeopleData = async (categoryData) => {
@@ -115,12 +130,16 @@ class App extends Component {
             className="button">Vehicles
           </button>
           <button 
+            onClick={this.handleClick}
+
+            value="favorites"
             className="button">Favorites
           </button>
         </div>
         <div>
           {this.state.cardType && 
           <CardContainer 
+            handleFavoriteClick={this.handleFavoriteClick}
             className="card-container" 
             allState={this.state} 
           />}
